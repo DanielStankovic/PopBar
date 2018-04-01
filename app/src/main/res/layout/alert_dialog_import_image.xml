@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/alertDialogShade"
+    app:elevation="10dp">
+
+    <LinearLayout
+        android:id="@+id/useCameraButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_gravity="center">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_photo_camera_black_24dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/use_camera"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:textAppearance="?android:textAppearanceLarge"/>
+    </LinearLayout>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@android:color/black"/>
+    <LinearLayout
+        android:id="@+id/importFromGalleryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_gravity="center">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_image_black_24dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/import_from_gallery"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:textAppearance="?android:textAppearanceLarge"/>
+    </LinearLayout>
+
+</LinearLayout>

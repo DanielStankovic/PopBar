@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardViewSearchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/cardview_compat_inset_shadow"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:padding="10dp">
+
+
+            <EditText
+                android:id="@+id/searchEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/barcodeImageButton"
+                android:layout_toStartOf="@+id/barcodeImageButton"
+                android:drawableLeft="@android:drawable/ic_menu_search"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <ImageButton
+                android:id="@+id/barcodeImageButton"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/searchEditText"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/barcode" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:layout_below="@id/cardViewSearchBar"
+        android:layout_alignParentBottom="true"/>
+
+    <com.nightonke.boommenu.BoomMenuButton
+        android:id="@+id/bmb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        app:bmb_buttonEnum="ham"
+        app:bmb_inFragment="true"
+        app:bmb_piecePlaceEnum="piecePlace_ham_2"
+        app:bmb_buttonPlaceEnum="buttonPlace_ham_2"
+        app:bmb_dotRadius="0dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp" />
+
+
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="50dp"
+    android:background="#4c6dfd">
+
+
+    <ImageView
+        android:id="@+id/calculateVolumeDrinkImage"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+
+    <TextView
+        android:id="@+id/calculateVolumeDrinkTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calculateVolumeDrinkImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:text="vinjak" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calculateVolumeLinearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:id="@+id/calculateVolumeTextInputLayout">
+
+        <EditText
+            android:id="@+id/calculateVolumeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/current_weight"
+            android:textColor="@android:color/white"
+            android:ems="10"
+            android:inputType="text"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+   <LinearLayout
+       android:layout_centerHorizontal="true"
+       android:gravity="center"
+       android:id="@+id/calculateVolumeLinearLayout"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:layout_below="@id/calculateVolumeDrinkTitle"
+       android:layout_marginTop="20dp"
+       android:padding="10dp">
+
+       <TextView
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:text="@string/number_of_bottles_sold"
+           android:textSize="16sp"
+           android:padding="10dp"
+           android:layout_weight="5"
+
+           />
+
+       <NumberPicker
+           android:id="@+id/numberPicker"
+           android:layout_width="0dp"
+           android:layout_height="80dp"
+           android:layout_marginLeft="5dp"
+           android:layout_marginStart="5dp"
+           android:layout_weight="1">
+       </NumberPicker>
+
+
+
+   </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/calculateVolumeSubmitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/calculateVolumeCancelButton"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:padding="10dp"
+        android:src="@drawable/ic_done_white_24dp"
+        app:backgroundTint="@android:color/holo_green_light"
+        app:elevation="10dp"
+        app:fabSize="normal"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/calculateVolumeCancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/calculateVolumeTextInputLayout"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="40dp"
+        android:padding="10dp"
+        android:src="@drawable/ic_close_white_24dp"
+        app:backgroundTint="@android:color/holo_red_light"
+        app:elevation="10dp"
+        app:fabSize="normal" />
+
+    <TextView
+        android:id="@+id/rezultat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/calculateVolumeCancelButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
+        android:text="TextView" />
+
+
+</RelativeLayout>

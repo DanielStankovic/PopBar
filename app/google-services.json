@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "647507165936",
+    "firebase_url": "https://popbar-664cd.firebaseio.com",
+    "project_id": "popbar-664cd",
+    "storage_bucket": "popbar-664cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647507165936:android:e0597cad9f437266",
+        "android_client_info": {
+          "package_name": "com.popbarorg.popbar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "647507165936-s5pmse3b0g3bltub4fratbq182i1ar2u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.popbarorg.popbar",
+            "certificate_hash": "d44764f223e02bee595072433a42f006dfbcc9a0"
+          }
+        },
+        {
+          "client_id": "647507165936-npff6nmsjafga2lbot61r2rnom0tes96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDB6SqqXk6hEAbgeZ0jkRpHCs1dUEZEt_s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "647507165936-npff6nmsjafga2lbot61r2rnom0tes96.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
