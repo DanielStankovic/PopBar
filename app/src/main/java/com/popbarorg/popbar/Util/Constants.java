@@ -19,6 +19,8 @@ public class Constants {
 
     public static final String ADD_DRINK_DIALOG_FRAGMENT_TAG = "add_drink_dialog_fragment_tag";
     public static final String ADD_ONETIME_DRINK_DIALOG_FRAGMENT_TAG = "add_onetime_drink_dialog_fragment_tag";
+    public static final String CALCULATE_VOLUME_DIALOG_FRAGMENT_TAG = "calculate_volume_dialog_fragment_tag";
+
 
     public static final int CAMERA_CODE = 3;
     public static final int GALLERY_CODE = 4;

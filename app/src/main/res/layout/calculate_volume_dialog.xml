@@ -29,7 +29,7 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/calculateVolumeLinearLayout"
+        android:layout_below="@+id/calculateVolumeDrinkTitle"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="50dp"
         android:layout_marginLeft="50dp"
@@ -45,43 +45,11 @@
             android:hint="@string/current_weight"
             android:textColor="@android:color/white"
             android:ems="10"
-            android:inputType="text"
+            android:inputType="numberDecimal"
             />
     </android.support.design.widget.TextInputLayout>
 
-   <LinearLayout
-       android:layout_centerHorizontal="true"
-       android:gravity="center"
-       android:id="@+id/calculateVolumeLinearLayout"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="horizontal"
-       android:layout_below="@id/calculateVolumeDrinkTitle"
-       android:layout_marginTop="20dp"
-       android:padding="10dp">
 
-       <TextView
-           android:layout_width="0dp"
-           android:layout_height="wrap_content"
-           android:text="@string/number_of_bottles_sold"
-           android:textSize="16sp"
-           android:padding="10dp"
-           android:layout_weight="5"
-
-           />
-
-       <NumberPicker
-           android:id="@+id/numberPicker"
-           android:layout_width="0dp"
-           android:layout_height="80dp"
-           android:layout_marginLeft="5dp"
-           android:layout_marginStart="5dp"
-           android:layout_weight="1">
-       </NumberPicker>
-
-
-
-   </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/calculateVolumeSubmitButton"
@@ -117,14 +85,7 @@
         app:elevation="10dp"
         app:fabSize="normal" />
 
-    <TextView
-        android:id="@+id/rezultat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/calculateVolumeCancelButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp"
-        android:text="TextView" />
+
 
 
 </RelativeLayout>

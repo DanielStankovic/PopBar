@@ -1,9 +1,9 @@
 package com.popbarorg.popbar.Fragments;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,21 +14,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
+
+
 import com.nightonke.boommenu.BoomButtons.HamButton;
 import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
 import com.nightonke.boommenu.BoomMenuButton;
 import com.popbarorg.popbar.Data.AllDrinksRecycleAdapter;
 import com.popbarorg.popbar.Data.DatabaseHelper;
-import com.popbarorg.popbar.Model.CalculateDialog;
+
 import com.popbarorg.popbar.Model.DrinkModel;
 import com.popbarorg.popbar.R;
 import com.popbarorg.popbar.Util.Constants;
-import com.reactiveandroid.query.Select;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +36,7 @@ public class AllDrinksFragment extends Fragment {
     private RecyclerView recyclerView;
     private AllDrinksRecycleAdapter recycleAdapter;
     private List<DrinkModel> drinkList;
-    private ImageButton barCodeImageButton;
+
     private  EditText searchBar;
 
     private BoomMenuButton bmb;
@@ -62,14 +60,7 @@ public class AllDrinksFragment extends Fragment {
        databaseHelper = new DatabaseHelper();
        drinkList = databaseHelper.getAllDrinks();
 
-       barCodeImageButton = view.findViewById(R.id.barcodeImageButton);
 
-       barCodeImageButton.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               startScanning();
-           }
-       });
 
        searchBar = view.findViewById(R.id.searchEditText);
 
@@ -115,39 +106,14 @@ public class AllDrinksFragment extends Fragment {
         recycleAdapter.filterList(newList);
     }
 
-    private void startScanning(){
-        IntentIntegrator integrator = IntentIntegrator.forSupportFragment(this);
-        integrator.setPrompt("Skeniraj barkod proizvoda");
-        integrator.setCameraId(0);
-        integrator.setBeepEnabled(false);
-        integrator.setBarcodeImageEnabled(false);
-        integrator.initiateScan();
 
-    }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
-            if (result.getContents() == null) {
-                Toast.makeText(this.getActivity(), "Skeniranje prekinuto", Toast.LENGTH_SHORT).show();
-            } else {
 
-                String barcode = result.getContents();
-                DrinkModel drinkModel = Select.from(DrinkModel.class).where("drink_barcode = ?", barcode).fetchSingle();
-
-                CalculateDialog calculateDialog = new CalculateDialog(getActivity());
-                calculateDialog.calculateVolumeDialog(drinkModel);
-            }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
 
     private void createBoomButtons(){
 
         HamButton.Builder builder = new HamButton.Builder()
-                .normalImageRes(R.drawable.ic_add_white_24dp).normalText("Dodaj piće")
+                .normalImageRes(R.drawable.add_drink_icon).normalText("Dodaj piće")
                 .listener(new OnBMClickListener() {
                     @Override
                     public void onBoomButtonClick(int index) {
@@ -158,18 +124,18 @@ public class AllDrinksFragment extends Fragment {
                     }
                 });
         bmb.addBuilder(builder);
-        builder = new HamButton.Builder()
-                .normalImageRes(R.drawable.barcode).normalText("Dodaj jednokratno piće")
-                .listener(new OnBMClickListener() {
-                    @Override
-                    public void onBoomButtonClick(int index) {
-                        FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-                        fragmentTransaction.addToBackStack(null);
-                        AddOneTimeDrinkFragment addOneTimeDrinkFragment = new AddOneTimeDrinkFragment();
-                        addOneTimeDrinkFragment.show(fragmentTransaction, Constants.ADD_ONETIME_DRINK_DIALOG_FRAGMENT_TAG);
-                    }
-                });;
-        bmb.addBuilder(builder);
+//        builder = new HamButton.Builder()
+//                .normalImageRes(R.drawable.add_one_time_usable_drink).normalText("Dodaj jednokratno piće")
+//                .listener(new OnBMClickListener() {
+//                    @Override
+//                    public void onBoomButtonClick(int index) {
+//                        FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+//                        fragmentTransaction.addToBackStack(null);
+//                        AddOneTimeDrinkFragment addOneTimeDrinkFragment = new AddOneTimeDrinkFragment();
+//                        addOneTimeDrinkFragment.show(fragmentTransaction, Constants.ADD_ONETIME_DRINK_DIALOG_FRAGMENT_TAG);
+//                    }
+//                });;
+//        bmb.addBuilder(builder);
 
     }
 

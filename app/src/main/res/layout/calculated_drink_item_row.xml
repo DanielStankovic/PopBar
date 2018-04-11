@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/cardview_compat_inset_shadow">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/calculatedDrinkImage"
+                android:layout_width="60dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop" />
+
+
+
+            <LinearLayout
+                android:id="@+id/calculatedDrinkLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/calculatedDrinkImage"
+                android:layout_toEndOf="@+id/calculatedDrinkImage"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/calculatedDrinkTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="viski"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"/>
+
+                <Button
+                    android:id="@+id/calculatedDrinkDeleteButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@android:drawable/ic_delete" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/calculatedDrinkBarcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/calculatedDrinkLinearLayout"
+               android:layout_alignLeft="@id/calculatedDrinkLinearLayout"
+                android:layout_alignStart="@id/calculatedDrinkLinearLayout"
+                android:layout_toLeftOf="@+id/calculatedDrinkVolumeLeft"
+                android:layout_toStartOf="@id/calculatedDrinkVolumeLeft"
+                android:layout_marginTop="6dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="12sp"
+                android:text="12312414"/>
+
+            <TextView
+                android:id="@+id/calculatedDrinkVolumeLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/calculatedDrinkLinearLayout"
+                android:layout_alignEnd="@id/calculatedDrinkLinearLayout"
+                android:layout_below="@id/calculatedDrinkLinearLayout"
+                android:layout_marginTop="10dp"
+                android:text="750ml"
+                android:textSize="28sp"/>
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

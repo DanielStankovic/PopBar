@@ -16,20 +16,33 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.popbarorg.popbar.Data.DatabaseHelper;
+import com.popbarorg.popbar.Fragments.CalculatedDrinksFragment;
 import com.popbarorg.popbar.R;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 
 public class CalculateDialog {
 
     Context context;
     AlertDialog alertDialog;
 
-    int numberPickerValue = 0;
+
+
+    private Calendar calendar = Calendar.getInstance();
+
+    private String day = String.valueOf(calendar.get(Calendar.DAY_OF_MONTH));
+    private String month = String.valueOf(calendar.get(Calendar.MONTH)+1);
+    private String year = String.valueOf(calendar.get(Calendar.YEAR));
+    private String date = day+"/"+month+"/"+year;
+
 
     public CalculateDialog(Context context) {
         this.context = context;
     }
+
+
 
     public void calculateVolumeDialog(final DrinkModel drinkModel){
 
@@ -41,32 +54,16 @@ public class CalculateDialog {
 
         TextView drinkTitleTextView = dialogView.findViewById(R.id.calculateVolumeDrinkTitle);
         ImageView drinkImage = dialogView.findViewById(R.id.calculateVolumeDrinkImage);
-        NumberPicker numberPicker = dialogView.findViewById(R.id.numberPicker);
-        TextInputLayout textInputLayout = dialogView.findViewById(R.id.calculateVolumeTextInputLayout);
+
+
        final EditText calculatedWeightEditText = dialogView.findViewById(R.id.calculateVolumeEditText);
         FloatingActionButton submitButton = dialogView.findViewById(R.id.calculateVolumeSubmitButton);
         FloatingActionButton cancelButton = dialogView.findViewById(R.id.calculateVolumeCancelButton);
-        final TextView rezultat = dialogView.findViewById(R.id.rezultat);
-
-        if(drinkModel.isOneTimeUsable()){
-            textInputLayout.setVisibility(View.INVISIBLE);
-        }
-
-
-        numberPicker.setMinValue(0);
-        numberPicker.setMaxValue(1000);
 
 
 
-       numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-           @Override
-           public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-               numberPickerValue = numberPicker.getValue();
-           }
-       });
 
-
-cancelButton.setOnClickListener(new View.OnClickListener() {
+    cancelButton.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         alertDialog.dismiss();
@@ -85,37 +82,50 @@ cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String quantity = String.valueOf(numberPickerValue);
-                if(drinkModel.isOneTimeUsable()) {
-
-                    rezultat.setText(quantity);
-                }
-                else {
 
                     String calculatedWeightString = calculatedWeightEditText.getText().toString().trim();
                     if (!TextUtils.isEmpty(calculatedWeightString)) {
-                        float emptyBottleWeight = Float.parseFloat(drinkModel.getEmptyBottleWeight());
-                        float fullBottleWeight = Float.parseFloat(drinkModel.getFullBottleWeight());
-                        float startingVolume = Float.parseFloat(drinkModel.getMilliliters());
-                        float density = (fullBottleWeight - emptyBottleWeight) / startingVolume;
-
-                        float calculatedWeight = Float.parseFloat(calculatedWeightString);
-                        float volumeLeftInBottle = (calculatedWeight - emptyBottleWeight) / density;
-                        float amountSold = startingVolume - volumeLeftInBottle;
-                        BigDecimal bd = new BigDecimal(amountSold);
-                        bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-
-                        rezultat.setText("Prodato je " + quantity + " flaša i " + String.valueOf(bd) + " ml ovog alkohola");
+                        DatabaseHelper databaseHelper = new DatabaseHelper();
+                        if(databaseHelper.checkIfCalculatedDrinkExistsInRV(drinkModel.getBarCode(), date)){
+                            Toast.makeText(context, "Piće sa ovim barkodom je već izmereno za danas.", Toast.LENGTH_SHORT).show();
+                        } else {
 
 
+                            float emptyBottleWeight = Float.parseFloat(drinkModel.getEmptyBottleWeight());
+                            float fullBottleWeight = Float.parseFloat(drinkModel.getFullBottleWeight());
+                            float startingVolume = Float.parseFloat(drinkModel.getMilliliters());
+                            float density = (fullBottleWeight - emptyBottleWeight) / startingVolume;
+
+                            float calculatedWeight = Float.parseFloat(calculatedWeightString);
+                            float volumeLeftInBottle = (calculatedWeight - emptyBottleWeight) / density;
+
+                            BigDecimal bd = new BigDecimal(volumeLeftInBottle);
+                            bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+                            String calculatedVolume = String.valueOf(bd);
+
+                            CalculatedDrinkModel calculatedDrinkModel = new CalculatedDrinkModel(drinkModel.getBarCode(), drinkModel.getName(),
+                                    date, calculatedVolume, drinkModel.getDrinkImage());
+
+                            calculatedDrinkModel.save();
+                            Toast.makeText(context, "Piće izračunato.", Toast.LENGTH_SHORT).show();
+
+                            CalculatedDrinksFragment calculatedDrinksFragment = new CalculatedDrinksFragment();
+                            calculatedDrinksFragment.refreshRecyclerView(date);
+
+                            alertDialog.dismiss();
+
+
+                        }
                     }else{
                         Toast.makeText(context, "Unesite težinu izmerene flaše.", Toast.LENGTH_SHORT).show();
                     }
-                }
+
             }
         });
         alertDialog = builder.create();
         alertDialog.show();
     }
+
+
 
 }
