@@ -284,9 +284,8 @@ public class AddDrinkDialogFragment extends AppCompatDialogFragment implements V
             }
             byte[] bytes = null;
 
-            Log.i("DO IN BACKGROUND", "MB BEFORE COMPRESION: " + bitmap.getByteCount() / 1000000);
             bytes = getBytesFromBitmap(bitmap, 50);
-            Log.i("DO IN BACKGROUND", "MB BEFORE COMPRESION: " + bytes.length / 1000000);
+
             return  bytes;
         }
 

@@ -3,6 +3,7 @@ package com.popbarorg.popbar.Data;
 
 import com.popbarorg.popbar.Model.CalculatedDrinkModel;
 import com.popbarorg.popbar.Model.DrinkModel;
+import com.reactiveandroid.query.Delete;
 import com.reactiveandroid.query.Select;
 
 
@@ -49,6 +50,12 @@ public class DatabaseHelper {
         }else{
             return true;
         }
+
+    }
+
+    public void deleteAllForDate(String date){
+
+        Delete.from(CalculatedDrinkModel.class).where("calculated_drink_date = ?", date).execute();
 
     }
 

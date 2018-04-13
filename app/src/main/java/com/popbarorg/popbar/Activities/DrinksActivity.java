@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.popbarorg.popbar.Data.AppDatabase;
+import com.popbarorg.popbar.Fragments.AboutAppFragment;
 import com.popbarorg.popbar.Fragments.AllDrinksFragment;
 import com.popbarorg.popbar.Fragments.CalculatedDrinksFragment;
 import com.popbarorg.popbar.Fragments.ConfirmationDialog;
@@ -132,6 +133,10 @@ public class DrinksActivity extends AppCompatActivity implements NavigationView.
             case R.id.signout:
                 signOutUser();
 
+                break;
+
+            case R.id.about_us:
+                fragment = new AboutAppFragment();
                 break;
 
             case R.id.contact:

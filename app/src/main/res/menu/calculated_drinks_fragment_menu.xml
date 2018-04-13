@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/export"
+        android:title="Exportuj tabelu &amp; pošalji na e-mail"
+        app:showAsAction="withText"
+        android:icon="@drawable/send_email_icon"/>
+    <item
+        android:id="@+id/deleteAll"
+        android:title="Obriši sve"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_delete_forever_black_24dp"
+        app:iconTint="@android:color/white"/>
+
+</menu>

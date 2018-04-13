@@ -59,6 +59,11 @@
     <string name="phone_number">+381 69 1463423</string>
 
     <string name="choose_email_app">Izaberite aplikaciju za slanje e-maila</string>
+    <string name="watch_info_video">Video sa instrukcijama pogledajte</string>
+    <string name="here">OVDE</string>
+    <string name="youtube_video_id">FHXlpIle8Sg</string>
+
+    <string name="delete_all_drinks_for_date">Da li ste sigurni da želite da obrišete sva pića za trenutni datum?</string>
 
 
 </resources>
